@@ -1,0 +1,39 @@
+{
+  "name": "heey-ali",
+  "version": "1.0.0",
+  "description": "Hey-Ali! is an unofficial library for interacting with the AliExpress API. Developed to facilitate access to AliExpress features, it allows developers to quickly integrate the platform into their applications.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx tsc --watch ./src/index.ts",
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write 'src/**/*.{js,ts,json}' --config ./.prettierrc",
+    "prepare": "husky"
+  },
+  "keywords": [
+    "Ali express"
+  ],
+  "author": "Allan Diego",
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
+    "@eslint/js": "^9.14.0",
+    "@types/eslint__js": "^8.42.3",
+    "@types/node": "^22.5.5",
+    "eslint": "^9.14.0",
+    "globals": "^15.11.0",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "3.3.3",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.12.2",
+    "vitest": "^2.1.4"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  },
+  "repository": "git@github.com:allandiegoasilva/heey-ali.git"
+}
