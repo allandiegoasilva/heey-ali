@@ -12,7 +12,7 @@ export class HeeyAliBuildParams {
       method: input.method,
       sign_method: 'sha256',
       app_key: input.appKey,
-      timestamp: Date.now() as unknown as string,
+      timestamp: Date.now().toString(),
     };
   }
 }
