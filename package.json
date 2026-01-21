@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write 'src/**/*.{js,ts,json}' --config ./.prettierrc",
-    "prepare": "husky"
+    "prepare": "husky",
+    "test:integration": "vitest run --config vitest.config.integration.ts"
   },
   "keywords": [
     "Ali express",
