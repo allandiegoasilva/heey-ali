@@ -1,9 +1,9 @@
-import { createHmac } from "crypto";
+import { createHmac } from 'crypto';
 
 type Input = {
   appSecret: string;
   params: Record<string, string>;
-}
+};
 
 /* @internal */
 export class HeeyAliSignParams {

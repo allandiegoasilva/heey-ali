@@ -1,12 +1,12 @@
-import { HeeyAliCredential } from "@/types";
-import { HeeyAliBuildParams } from "./heey-ali-build-params";
-import { HeeyAliSignParams } from "./heey-ali-sign";
-import { HeeyAliSortParams } from "./heey-ali-sort-params";
+import { HeeyAliCredential } from '@/types';
+import { HeeyAliBuildParams } from './heey-ali-build-params';
+import { HeeyAliSignParams } from './heey-ali-sign';
+import { HeeyAliSortParams } from './heey-ali-sort-params';
 
 type Input = {
   method: string;
   params: Record<string, string>;
-}
+};
 
 /* @internal */
 export class HeeyAliHttpEndpointBuilder {

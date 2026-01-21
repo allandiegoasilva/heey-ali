@@ -1,5 +1,5 @@
-import { HeeyAliHttpClient } from "./internal/http/heey-ali-http-client";
-import { HeeyAliCredential } from "./types";
+import { HeeyAliHttpClient } from './internal/http/heey-ali-http-client';
+import { HeeyAliCredential } from './types';
 
 export class HeeyAli {
   private _httpClient: HeeyAliHttpClient;
@@ -9,6 +9,6 @@ export class HeeyAli {
   }
 
   get test(): unknown {
-    return "oi";
+    return 'oi';
   }
 }

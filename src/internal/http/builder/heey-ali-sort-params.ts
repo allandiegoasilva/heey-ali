@@ -1,4 +1,3 @@
-
 /* @internal */
 export class HeeyAliSortParams {
   static sortParams(params: Record<string, string>): Record<string, string> {
