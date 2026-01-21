@@ -1,6 +1,5 @@
-import { HttpMethod } from '@/enums/http-method';
 import { ProductEndpoint } from '@/enums/product-endpoint';
-import { AliExpress } from '@/models/ali-express';
+import { HttpMethod } from '@/internal/enum/http-method';
 import { writeFileSync } from 'fs';
 import { cwd } from 'process';
 import { beforeAll, describe, expect, it, vi } from 'vitest';

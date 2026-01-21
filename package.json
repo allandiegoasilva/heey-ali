@@ -13,7 +13,9 @@
     "prepare": "husky"
   },
   "keywords": [
-    "Ali express"
+    "Ali express",
+    "Ali Express API",
+    "Unofficial Ali Express SDK"
   ],
   "author": "Allan Diego",
   "license": "MIT",
