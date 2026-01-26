@@ -13,14 +13,20 @@ describe('DsAuthenticationTokenCreate', () => {
 
   it('should not create a token with invalid code', async () => {
     const result = await dropshippersApi.authentication.tokenCreate({ code: 'invalid-code' });
-    console.log(result);
+   
     expect(result).toBeDefined();
-    expect(result).toBeInstanceOf(Object);
-    
-    // Verifica se a resposta contém informações de erro
-    // A API do AliExpress retorna error_response com code e msg quando há erro
-    const errorResponse = result as { code?: string | number; msg?: string; [key: string]: unknown };
-    expect(errorResponse.code).toBeDefined();
-    expect(typeof errorResponse.code === 'string' || typeof errorResponse.code === 'number').toBe(true);
+    expect(result.success).toBeFalsy();
+    expect(result.data).toBeInstanceOf(Object);
+  });
+  
+  
+  it('should create a token with valid code', async () => {
+    const result = await dropshippersApi.authentication.tokenCreate({ 
+      code: process.env.TEST_ALI_EXPRESS_CODE as string
+    });
+   
+    expect(result).toBeDefined();
+    expect(result.success).toBeTruthy();
+    expect(result.data).toBeInstanceOf(Object);
   });
 });
