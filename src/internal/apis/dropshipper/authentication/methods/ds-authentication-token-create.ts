@@ -1,7 +1,7 @@
 import { EndpointPrefix } from '@/internal/enum/endpoint-prefix';
 import { HttpMethod } from '@/internal/enum/http-method';
 import { HeeyAliHttpClient } from '@/internal/http/heey-ali-http-client';
-import { DSAuthenticationTokenCreateInputDTO } from '../dtos/token-create/token-create-input.dto';
+import { DSAuthenticationTokenCreateInputDTO } from '../dtos/token-create/ds-authentication-token-create-input.dto';
 
 /**
  * Class responsible for creating the authentication token after user authorization.
