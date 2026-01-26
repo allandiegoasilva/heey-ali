@@ -1,9 +1,11 @@
+import { EndpointPrefix } from '@/internal/enum/endpoint-prefix';
 import { HeeyAliCredential } from '@/types';
 import { HeeyAliBuildParams } from './heey-ali-build-params';
 import { HeeyAliSignParams } from './heey-ali-sign';
 import { HeeyAliSortParams } from './heey-ali-sort-params';
 
 type Input = {
+  prefix: EndpointPrefix;
   method: string;
   params: Record<string, string>;
 };
