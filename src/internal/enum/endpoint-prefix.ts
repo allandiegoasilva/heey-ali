@@ -1,4 +1,4 @@
 export enum EndpointPrefix {
   REST = 'rest',
-  SYNC = 'sync'
+  SYNC = 'sync',
 }
