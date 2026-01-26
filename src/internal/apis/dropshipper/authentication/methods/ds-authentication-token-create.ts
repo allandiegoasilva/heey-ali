@@ -37,7 +37,9 @@ export class DsAuthenticationTokenCreate {
       endpoint: this._method,
       method: HttpMethod.POST,
       prefix: EndpointPrefix.REST,
-      params: input,
+      params: {
+        ...input,
+      },
     });
 
     return request.data;
