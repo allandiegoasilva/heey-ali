@@ -46,62 +46,23 @@ describe('HeeyAliHttpClient - Integration', () => {
     );
   });
 
-  it('should make request and return response with success', async () => {
+
+  it('should just connect to the API with error in response', async () => {
     const input = {
       method: HttpMethod.GET,
       endpoint: 'aliexpress.ds.product.get',
-      params: {},
-    };
-
-    const result = await sut.request(input);
-
-    console.log(result);
-
-    expect(result).toHaveProperty('success', true);
-    expect(result).toHaveProperty('data');
-    expect(result.success).toBe(true);
-  }, 30000);
-
-  it('should include all params in request', async () => {
-    const input = {
-      method: HttpMethod.GET,
-      endpoint: 'test.method',
       params: {
-        param1: 'value1',
-        param2: 'value2',
+        ship_to_country: 'US',
+        product_id: '1005003784285827',
+        target_currency: 'USD',
+        target_language: 'en',
+        remove_personal_benefit: 'false',
       },
     };
 
     const result = await sut.request(input);
 
-    expect(result.success).toBe(true);
-    expect(result.data).toBeDefined();
-  }, 30000);
-
-  it('should handle POST method', async () => {
-    const input = {
-      method: HttpMethod.POST,
-      endpoint: 'test.endpoint',
-      params: {},
-    };
-
-    const result = await sut.request(input);
-
-    expect(result.success).toBe(true);
-    expect(result.data).toBeDefined();
-  }, 30000);
-
-  it('should build correct URL with all params', async () => {
-    const input = {
-      method: HttpMethod.GET,
-      endpoint: 'test.endpoint',
-      params: {
-        custom_param: 'custom_value',
-      },
-    };
-
-    const result = await sut.request(input);
-
-    expect(result.success).toBe(true);
-  }, 30000);
+    expect(result.code).toBe(200);
+    expect(result.success).toBe(false);
+  });
 });

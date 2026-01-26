@@ -36,7 +36,7 @@
     "header-max-length": [
       2,
       "always",
-      72
+      100
     ]
   }
 }

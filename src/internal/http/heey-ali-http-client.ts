@@ -27,9 +27,26 @@ export class HeeyAliHttpClient {
       method: input.method,
     });
 
+    if (request.status == 404) {
+      return {
+        success: false,
+        code: request.status,
+      };
+    }
+
     const result = await request.json();
+    const keys = Object.keys(result);
+
+    if (keys.includes('error_response')) {
+      return {
+        success: false,
+        code: request.status,
+        data: result.error_response,
+      };
+    }
 
     return {
+      code: request.status,
       success: true,
       data: result,
     };
