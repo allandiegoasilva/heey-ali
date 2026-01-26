@@ -21,7 +21,7 @@ export class HeeyAliHttpClient {
     const url = this._requestBuilder.build({
       prefix: input.prefix,
       method: input.endpoint,
-      params: input.params,
+      params: input.params || {},
     });
 
     const request = await fetch(url, {
