@@ -1,5 +1,5 @@
 import { HeeyAliHttpClient } from '@/internal/http/heey-ali-http-client';
-import { DSAuthorizeInputDTO } from '../dtos/authorize/ds-authorize-input.dto';
+import { DsAuthenticationAuthorizeInputDTO } from '../dtos/authorize/ds-authentication-authorize-input.dto';
 
 /**
  * Let users authorize your APP. Your users can use their AE accounts to authorize your APP.
@@ -18,7 +18,7 @@ export class DsAuthorize {
     return new DsAuthorize(httpClient);
   }
 
-  async execute(input: DSAuthorizeInputDTO): Promise<string> {
+  async execute(input: DsAuthenticationAuthorizeInputDTO): Promise<string> {
     const url = new URL(this._httpClient.credential.baseUrl);
     url.pathname = this._method;
 
