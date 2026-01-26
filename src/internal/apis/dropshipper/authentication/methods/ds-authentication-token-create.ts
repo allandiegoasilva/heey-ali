@@ -1,7 +1,11 @@
 import { EndpointPrefix } from '@/internal/enum/endpoint-prefix';
 import { HttpMethod } from '@/internal/enum/http-method';
 import { HeeyAliHttpClient } from '@/internal/http/heey-ali-http-client';
+import { ReplyDto } from '@/internal/types/reply.type';
 import { DSAuthenticationTokenCreateInputDTO } from '../dtos/token-create/ds-authentication-token-create-input.dto';
+import { DsAuthenticationTokenCreateReplyDTO } from '../dtos/token-create/ds-authentication-token-create-reply.dto';
+
+type ReplyContentDto = ReplyDto<DsAuthenticationTokenCreateReplyDTO>;
 
 /**
  * Class responsible for creating the authentication token after user authorization.
@@ -32,16 +36,19 @@ export class DsAuthenticationTokenCreate {
    * @param input - Input data containing the authorization code and other necessary information
    * @returns Promise that resolves with the access token data
    */
-  async execute(input: DSAuthenticationTokenCreateInputDTO): Promise<unknown> {
-    const request = await this._httpClient.request({
-      endpoint: this._method,
-      method: HttpMethod.POST,
-      prefix: EndpointPrefix.REST,
-      params: {
-        ...input,
-      },
-    });
+  async execute(
+    input: DSAuthenticationTokenCreateInputDTO,
+  ): Promise<ReplyContentDto> {
+    const request =
+      await this._httpClient.request<DsAuthenticationTokenCreateReplyDTO>({
+        endpoint: this._method,
+        method: HttpMethod.POST,
+        prefix: EndpointPrefix.REST,
+        params: {
+          ...input,
+        },
+      });
 
-    return request.data;
+    return request;
   }
 }
