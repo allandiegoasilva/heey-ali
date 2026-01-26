@@ -20,6 +20,15 @@ export class HeeyAliHttpEndpointBuilder {
   }
 
   build(input: Input): string {
+    if (input.prefix === EndpointPrefix.REST) {
+      return `${this._credential.baseUrl}/${input.prefix}/${input.method}`;
+    }
+
+    const paramString = this.signParams(input);
+    return `${this._credential.baseUrl}?${paramString}`;
+  }
+
+  private signParams(input: Input): string {
     const params = HeeyAliBuildParams.build({
       params: input.params,
       method: input.method,
@@ -38,6 +47,6 @@ export class HeeyAliHttpEndpointBuilder {
 
     const paramString: string = urlParams.toString();
 
-    return `${this._credential.baseUrl}?${paramString}`;
+    return paramString;
   }
 }
