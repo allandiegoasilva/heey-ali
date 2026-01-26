@@ -19,6 +19,7 @@ export class HeeyAliHttpClient {
 
   async request<T>(input: HeeyAliHttpClientRequest): Promise<ReplyDto<T>> {
     const url = this._requestBuilder.build({
+      prefix: input.prefix,
       method: input.endpoint,
       params: input.params,
     });
