@@ -13,7 +13,6 @@ type Input = {
 /* @internal */
 export class HeeyAliHttpEndpointBuilder {
   private _credential: HeeyAliCredential;
-  private _params: Record<string, string> = {};
 
   constructor(readonly credential: HeeyAliCredential) {
     this._credential = credential;
@@ -21,7 +20,9 @@ export class HeeyAliHttpEndpointBuilder {
 
   build(input: Input): string {
     if (input.prefix === EndpointPrefix.REST) {
-      return `${this._credential.baseUrl}/${input.prefix}/${input.method}`;
+      const paramString = this.signParams(input);
+
+      return `${this._credential.baseUrl}/${input.prefix}${input.method}?${paramString}`;
     }
 
     const paramString = this.signParams(input);
@@ -30,6 +31,7 @@ export class HeeyAliHttpEndpointBuilder {
 
   private signParams(input: Input): string {
     const params = HeeyAliBuildParams.build({
+      prefix: input.prefix,
       params: input.params,
       method: input.method,
       appKey: this._credential.appKey,
@@ -40,6 +42,8 @@ export class HeeyAliHttpEndpointBuilder {
     const sign = HeeyAliSignParams.sign({
       appSecret: this._credential.appSecret,
       params: sortedParams,
+      method: input.method,
+      prefix: input.prefix,
     });
 
     const urlParams = new URLSearchParams(sortedParams);
