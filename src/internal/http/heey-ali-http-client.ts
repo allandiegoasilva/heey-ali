@@ -1,6 +1,8 @@
 import { HeeyAliCredential } from '@/internal/types/heey-ali-credential.type';
 import { HeeyAliHttpClientRequest } from '@/internal/types/heey-ali-http-client-request.type';
 import { ReplyDto } from '@/internal/types/reply.type';
+import { ErrorType } from '../enum/error-type';
+import { HeeyAliGenericError } from '../types/heey-ali-generic-error.type';
 import { HeeyAliHttpEndpointBuilder } from './builder/heey-ali-http-endpoint-builder';
 
 /* @internal */
@@ -46,10 +48,33 @@ export class HeeyAliHttpClient {
       };
     }
 
+    const success = this.isSuccess(result);
+
     return {
       code: request.status,
-      success: true,
+      success: success,
       data: result,
     };
+  }
+
+  private isSuccess<T>(result: T | HeeyAliGenericError): boolean {
+    let success = true;
+
+    const keys = Object.keys(result as object);
+
+    if (keys.includes('type')) {
+      const type = (result as HeeyAliGenericError).type;
+      const isErrorType = [
+        ErrorType.SYSTEM,
+        ErrorType.ISV,
+        ErrorType.ISP,
+      ].includes(type);
+
+      if (isErrorType) {
+        success = false;
+      }
+    }
+
+    return success;
   }
 }
