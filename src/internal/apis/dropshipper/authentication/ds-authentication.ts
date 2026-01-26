@@ -48,7 +48,9 @@ export class DsAuthentication {
    *
    * @see {@link https://openservice.aliexpress.com/doc/doc.htm?spm=a2o9m.11193494.0.0.80ca6095yBvNgQ&nodeId=27493&docId=118729#/?docId=1592 Official API Documentation}
    */
-  tokenCreate(input: DSAuthenticationTokenCreateInputDTO): Promise<ReplyDto<DsAuthenticationTokenCreateReplyDTO>> {
+  tokenCreate(
+    input: DSAuthenticationTokenCreateInputDTO,
+  ): Promise<ReplyDto<DsAuthenticationTokenCreateReplyDTO>> {
     if (!this._tokenCreate) {
       this._tokenCreate = DsAuthenticationTokenCreate._create(this._httpClient);
     }
